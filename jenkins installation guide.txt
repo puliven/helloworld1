@@ -1,0 +1,40 @@
+jenkins installation on amazon linux
+
+
+ sudo yum update –y
+
+
+ sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+
+ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+
+ sudo yum upgrade
+
+
+ sudo yum install jenkins
+
+ sudo systemctl daemon-reload
+
+
+ sudo service jenkins status
+
+ sudo service jenkins restart
+
+
+ if this error pops up:
+
+ Error: Package: jenkins-2.303.1-1.1.noarch (jenkins)  
+       Requires: daemonize  
+  You could try using --skip-broken to work around the problem  
+  You could try running: rpm -Va --nofiles --nodigest
+
+
+[ec2-user@ip-172-31-31-183 ~]$ docker --version
+Docker version 20.10.7, build f0df350
+ solution :  # yum install epel-release -y  
+ # yum install daemonize -y  
+ Than you can continue on installing the Jenkins as  
+ # yum install jenkins -y  
